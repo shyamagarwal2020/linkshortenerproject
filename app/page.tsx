@@ -54,12 +54,12 @@ export default function Home() {
 
         <div className="flex flex-wrap items-center justify-center gap-3">
           <Show when="signed-out">
-            <SignUpButton mode="modal">
+            <SignUpButton mode="modal" forceRedirectUrl="/dashboard">
               <Button size="lg" className="px-8">
                 Get Started — it&apos;s free
               </Button>
             </SignUpButton>
-            <SignInButton mode="modal">
+            <SignInButton mode="modal" forceRedirectUrl="/dashboard">
               <Button variant="outline" size="lg" className="px-8">
                 Sign in
               </Button>

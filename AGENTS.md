@@ -22,6 +22,7 @@ This is a **Next.js 16 / React 19** link-shortener application. Coding standards
 
 ## Quick Reference
 
+- **NEVER use `middleware.ts`** — it is deprecated in this version of Next.js. Use `proxy.ts` instead for all proxy/middleware logic.
 - **Path alias**: `@/` maps to the project root — use it everywhere instead of relative imports.
 - **`params` / `searchParams` are Promises** in Next.js 16 — always `await` them in layouts and pages.
 - **`cn()`** from `@/lib/utils` is the only approved way to merge Tailwind classes.
