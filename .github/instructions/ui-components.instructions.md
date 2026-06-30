@@ -1,3 +1,7 @@
+---
+description: Read this before creating or modifying UI components in the project.
+---
+
 # UI Components — shadcn/ui Only
 
 ## Non-Negotiable Rules

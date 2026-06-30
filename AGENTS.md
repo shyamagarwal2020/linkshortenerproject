@@ -1,24 +1,12 @@
 <!-- BEGIN:nextjs-agent-rules -->
 # This is NOT the Next.js you know
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data.
 <!-- END:nextjs-agent-rules -->
 
 # Agent Instructions — Link Shortener Project
 
-This is a **Next.js 16 / React 19** link-shortener application. Coding standards are documented in the `/docs` directory.
-
-> [!CAUTION]
-> **MANDATORY: You MUST read the relevant `/docs` instruction file(s) BEFORE writing ANY code.** This is not optional. Generating code without first reading the applicable doc is a violation of these instructions. No exceptions.
-
-## Instruction Files
-
-| File | Domain |
-|---|---|
-| [docs/auth.md](docs/auth.md) | Authentication (Clerk) |
-| [docs/ui.md](docs/ui.md) | UI Components (shadcn/ui) |
-
-**STOP. Before writing a single line of code, identify which domain(s) your task touches and read every corresponding file in the table above in full.** These files are the authoritative source of truth for this project's conventions — your training data is not.
+This is a **Next.js 16 / React 19** link-shortener application. 
 
 ## Quick Reference
 
