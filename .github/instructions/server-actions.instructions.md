@@ -34,32 +34,32 @@ The `actions.ts` file must begin with `"use server"` at the top.
 ## Anatomy of a Server Action
 
 ```ts
-"use server"
+'use server';
 
-import { auth } from "@clerk/nextjs/server"
-import { z } from "zod"
-import { createLink } from "@/data/links"
+import { auth } from '@clerk/nextjs/server';
+import { z } from 'zod';
+import { createLink } from '@/data/links';
 
 const CreateLinkSchema = z.object({
   url: z.string().url(),
   slug: z.string().min(1).max(50),
-})
+});
 
-type CreateLinkInput = z.infer<typeof CreateLinkSchema>
+type CreateLinkInput = z.infer<typeof CreateLinkSchema>;
 
 export async function createLinkAction(input: CreateLinkInput) {
   // 1. Auth check — always first
-  const { userId } = await auth()
-  if (!userId) return { error: "Unauthorized" }
+  const { userId } = await auth();
+  if (!userId) return { error: 'Unauthorized' };
 
   // 2. Validate input with Zod
-  const parsed = CreateLinkSchema.safeParse(input)
-  if (!parsed.success) return { error: "Invalid input" }
+  const parsed = CreateLinkSchema.safeParse(input);
+  if (!parsed.success) return { error: 'Invalid input' };
 
   // 3. Delegate to /data helper — never use drizzle directly here
-  await createLink({ ...parsed.data, userId })
+  await createLink({ ...parsed.data, userId });
 
-  return { success: true }
+  return { success: true };
 }
 ```
 

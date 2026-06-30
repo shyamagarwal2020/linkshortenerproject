@@ -1,10 +1,16 @@
-import { Show, SignInButton, SignUpButton } from '@clerk/nextjs'
-import Link from 'next/link'
-import { Link2, BarChart3, Zap, Shield } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { cn } from '@/lib/utils'
+import { Show, SignInButton, SignUpButton } from '@clerk/nextjs';
+import Link from 'next/link';
+import { Link2, Zap, Shield } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
 
 const features = [
   {
@@ -20,18 +26,12 @@ const features = [
       'Generate short links that look great in emails, social posts, and messages.',
   },
   {
-    icon: BarChart3,
-    title: 'Click Analytics',
-    description:
-      'Track how many times each link has been clicked and monitor engagement over time.',
-  },
-  {
     icon: Shield,
     title: 'Secure & Reliable',
     description:
       'Every link is tied to your account, giving you full control to manage or delete them.',
   },
-]
+];
 
 export default function Home() {
   return (
@@ -43,13 +43,12 @@ export default function Home() {
         </Badge>
 
         <h1 className="max-w-2xl text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-6xl">
-          Shorten links,{' '}
-          <span className="text-primary">amplify reach</span>
+          Shorten links, <span className="text-primary">amplify reach</span>
         </h1>
 
         <p className="max-w-xl text-lg text-zinc-600 dark:text-zinc-400">
-          Turn long, unwieldy URLs into clean short links in seconds. Track
-          clicks, manage links, and share with confidence.
+          Turn long, unwieldy URLs into clean short links in seconds. Manage
+          your links and share with confidence.
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-3">
@@ -81,7 +80,8 @@ export default function Home() {
               Everything you need
             </h2>
             <p className="mt-3 text-zinc-600 dark:text-zinc-400">
-              A simple, powerful toolset for managing all your links in one place.
+              A simple, powerful toolset for managing all your links in one
+              place.
             </p>
           </div>
 
@@ -91,7 +91,7 @@ export default function Home() {
                 key={title}
                 className={cn(
                   'flex flex-col gap-0 transition-shadow hover:shadow-md',
-                  'dark:hover:shadow-zinc-800/50'
+                  'dark:hover:shadow-zinc-800/50',
                 )}
               >
                 <CardHeader>
@@ -135,5 +135,5 @@ export default function Home() {
         </div>
       </section>
     </div>
-  )
+  );
 }

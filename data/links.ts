@@ -22,7 +22,11 @@ export async function getLinksByUser() {
     return [];
   }
 
-  return db.select().from(links).where(eq(links.userId, userId)).orderBy(desc(links.updatedAt));
+  return db
+    .select()
+    .from(links)
+    .where(eq(links.userId, userId))
+    .orderBy(desc(links.updatedAt));
 }
 
 export async function updateLink({
@@ -43,7 +47,13 @@ export async function updateLink({
     .returning();
 }
 
-export async function deleteLink({ id, userId }: { id: number; userId: string }) {
+export async function deleteLink({
+  id,
+  userId,
+}: {
+  id: number;
+  userId: string;
+}) {
   return db
     .delete(links)
     .where(and(eq(links.id, id), eq(links.userId, userId)))
@@ -51,6 +61,10 @@ export async function deleteLink({ id, userId }: { id: number; userId: string })
 }
 
 export async function getLinkBySlug(slug: string) {
-  const result = await db.select().from(links).where(eq(links.slug, slug)).limit(1);
+  const result = await db
+    .select()
+    .from(links)
+    .where(eq(links.slug, slug))
+    .limit(1);
   return result[0] ?? null;
 }

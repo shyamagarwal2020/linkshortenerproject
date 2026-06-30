@@ -1,16 +1,16 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog"
+} from '@/components/ui/dialog';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -20,59 +20,59 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Link, Pencil, Trash2 } from "lucide-react"
-import { updateLinkAction, deleteLinkAction } from "./actions"
+} from '@/components/ui/alert-dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Link, Pencil, Trash2 } from 'lucide-react';
+import { updateLinkAction, deleteLinkAction } from './actions';
 
 type LinkData = {
-  id: number
-  slug: string
-  url: string
-  userId: string
-  createdAt: Date
-  updatedAt: Date
-}
+  id: number;
+  slug: string;
+  url: string;
+  userId: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
 
 export function LinkItem({ link }: { link: LinkData }) {
-  const router = useRouter()
-  const [editOpen, setEditOpen] = useState(false)
-  const [deleteOpen, setDeleteOpen] = useState(false)
-  const [url, setUrl] = useState(link.url)
-  const [slug, setSlug] = useState(link.slug)
-  const [error, setError] = useState<string | null>(null)
-  const [pending, setPending] = useState(false)
+  const router = useRouter();
+  const [editOpen, setEditOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const [url, setUrl] = useState(link.url);
+  const [slug, setSlug] = useState(link.slug);
+  const [error, setError] = useState<string | null>(null);
+  const [pending, setPending] = useState(false);
 
   async function handleEdit(e: React.FormEvent) {
-    e.preventDefault()
-    setError(null)
-    setPending(true)
+    e.preventDefault();
+    setError(null);
+    setPending(true);
 
-    const result = await updateLinkAction({ id: link.id, url, slug })
-    setPending(false)
+    const result = await updateLinkAction({ id: link.id, url, slug });
+    setPending(false);
 
     if (result.error) {
-      setError(result.error)
-      return
+      setError(result.error);
+      return;
     }
 
-    setEditOpen(false)
-    router.refresh()
+    setEditOpen(false);
+    router.refresh();
   }
 
   function handleEditOpenChange(value: boolean) {
-    setEditOpen(value)
+    setEditOpen(value);
     if (!value) {
-      setUrl(link.url)
-      setSlug(link.slug)
-      setError(null)
+      setUrl(link.url);
+      setSlug(link.slug);
+      setError(null);
     }
   }
 
   async function handleDelete() {
-    await deleteLinkAction({ id: link.id })
-    router.refresh()
+    await deleteLinkAction({ id: link.id });
+    router.refresh();
   }
 
   return (
@@ -157,7 +157,9 @@ export function LinkItem({ link }: { link: LinkData }) {
               </p>
             </div>
             {error && (
-              <p className="text-sm text-destructive dark:text-destructive">{error}</p>
+              <p className="text-sm text-destructive dark:text-destructive">
+                {error}
+              </p>
             )}
             <div className="flex justify-end gap-2 pt-2">
               <Button
@@ -169,7 +171,7 @@ export function LinkItem({ link }: { link: LinkData }) {
                 Cancel
               </Button>
               <Button type="submit" disabled={pending}>
-                {pending ? "Saving…" : "Save"}
+                {pending ? 'Saving…' : 'Save'}
               </Button>
             </div>
           </form>
@@ -184,7 +186,7 @@ export function LinkItem({ link }: { link: LinkData }) {
               Delete this link?
             </AlertDialogTitle>
             <AlertDialogDescription className="dark:text-muted-foreground">
-              This will permanently delete{" "}
+              This will permanently delete{' '}
               <span className="font-medium text-foreground dark:text-white">
                 /{link.slug}
               </span>
@@ -205,5 +207,5 @@ export function LinkItem({ link }: { link: LinkData }) {
         </AlertDialogContent>
       </AlertDialog>
     </>
-  )
+  );
 }

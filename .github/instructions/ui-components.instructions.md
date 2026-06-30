@@ -35,12 +35,12 @@ Always import from the `@/components/ui/` alias — never use relative paths:
 
 ```tsx
 // correct
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 
 // wrong
-import { Button } from '../../components/ui/button'
+import { Button } from '../../components/ui/button';
 ```
 
 ---
@@ -50,7 +50,7 @@ import { Button } from '../../components/ui/button'
 Icons must come from **`lucide-react`** only (configured in `components.json` as `iconLibrary: "lucide"`). Do not install or use `react-icons`, `heroicons`, `phosphor-icons`, or any other icon set.
 
 ```tsx
-import { Link, Copy, Trash2 } from 'lucide-react'
+import { Link, Copy, Trash2 } from 'lucide-react';
 ```
 
 ---
@@ -63,9 +63,14 @@ import { Link, Copy, Trash2 } from 'lucide-react'
 - Dark mode must always be supported — every color class needs a `dark:` counterpart.
 
 ```tsx
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/utils';
 
-<div className={cn('rounded-lg p-4 bg-white dark:bg-neutral-900', isActive && 'ring-2 ring-primary')} />
+<div
+  className={cn(
+    'rounded-lg p-4 bg-white dark:bg-neutral-900',
+    isActive && 'ring-2 ring-primary',
+  )}
+/>;
 ```
 
 ---

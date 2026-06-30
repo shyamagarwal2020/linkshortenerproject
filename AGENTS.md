@@ -1,4 +1,5 @@
 <!-- BEGIN:nextjs-agent-rules -->
+
 # This is NOT the Next.js you know
 
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data.
@@ -6,7 +7,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 # Agent Instructions — Link Shortener Project
 
-This is a **Next.js 16 / React 19** link-shortener application. 
+This is a **Next.js 16 / React 19** link-shortener application.
 
 ## Quick Reference
 
@@ -18,4 +19,3 @@ This is a **Next.js 16 / React 19** link-shortener application.
 - **No `any` types** — use `unknown` and narrow.
 - **Server Components by default** — add `"use client"` only when necessary.
 - **Dark mode** is always supported — every color class must have a `dark:` counterpart.
-

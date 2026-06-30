@@ -1,54 +1,54 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Plus } from "lucide-react"
-import { createLinkAction } from "./actions"
+} from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Plus } from 'lucide-react';
+import { createLinkAction } from './actions';
 
 export function CreateLinkDialog() {
-  const router = useRouter()
-  const [open, setOpen] = useState(false)
-  const [url, setUrl] = useState("")
-  const [slug, setSlug] = useState("")
-  const [error, setError] = useState<string | null>(null)
-  const [pending, setPending] = useState(false)
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
+  const [url, setUrl] = useState('');
+  const [slug, setSlug] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [pending, setPending] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    setError(null)
-    setPending(true)
+    e.preventDefault();
+    setError(null);
+    setPending(true);
 
-    const result = await createLinkAction({ url, slug: slug || undefined })
+    const result = await createLinkAction({ url, slug: slug || undefined });
 
-    setPending(false)
+    setPending(false);
 
     if (result.error) {
-      setError(result.error)
-      return
+      setError(result.error);
+      return;
     }
 
-    setOpen(false)
-    setUrl("")
-    setSlug("")
-    router.refresh()
+    setOpen(false);
+    setUrl('');
+    setSlug('');
+    router.refresh();
   }
 
   function handleOpenChange(value: boolean) {
-    setOpen(value)
+    setOpen(value);
     if (!value) {
-      setUrl("")
-      setSlug("")
-      setError(null)
+      setUrl('');
+      setSlug('');
+      setError(null);
     }
   }
 
@@ -62,7 +62,9 @@ export function CreateLinkDialog() {
       </DialogTrigger>
       <DialogContent className="sm:max-w-md dark:bg-card">
         <DialogHeader>
-          <DialogTitle className="dark:text-white">Create a new link</DialogTitle>
+          <DialogTitle className="dark:text-white">
+            Create a new link
+          </DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4 pt-2">
           <div className="space-y-2">
@@ -81,7 +83,10 @@ export function CreateLinkDialog() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="slug" className="dark:text-white">
-              Short slug <span className="text-muted-foreground dark:text-muted-foreground font-normal">(optional)</span>
+              Short slug{' '}
+              <span className="text-muted-foreground dark:text-muted-foreground font-normal">
+                (optional)
+              </span>
             </Label>
             <Input
               id="slug"
@@ -96,7 +101,9 @@ export function CreateLinkDialog() {
             </p>
           </div>
           {error && (
-            <p className="text-sm text-destructive dark:text-destructive">{error}</p>
+            <p className="text-sm text-destructive dark:text-destructive">
+              {error}
+            </p>
           )}
           <div className="flex justify-end gap-2 pt-2">
             <Button
@@ -108,11 +115,11 @@ export function CreateLinkDialog() {
               Cancel
             </Button>
             <Button type="submit" disabled={pending}>
-              {pending ? "Creating…" : "Create"}
+              {pending ? 'Creating…' : 'Create'}
             </Button>
           </div>
         </form>
       </DialogContent>
     </Dialog>
-  )
+  );
 }
